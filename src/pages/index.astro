@@ -8,13 +8,13 @@ import PageLayout from "@/layouts/Base.astro";
 import { collectionDateSort } from "@/utils/date";
 
 // Posts
-const MAX_POSTS = 10;
+const MAX_POSTS = 0;
 const allPosts = await getAllPosts();
 const allPostsByDate = allPosts.sort(collectionDateSort) as CollectionEntry<"post">[];
 const latestPosts = allPostsByDate.slice(0, MAX_POSTS);
 
 // Pinned Posts, set to a max of 3;
-const MAX_PINNED_POSTS = 3;
+const MAX_PINNED_POSTS = 0;
 const pinnedPosts = allPostsByDate
 	.values()
 	.filter((p) => p.data.pinned)
@@ -22,7 +22,7 @@ const pinnedPosts = allPostsByDate
 	.toArray();
 
 // Notes, set to a max of 5
-const MAX_NOTES = 5;
+const MAX_NOTES = 0;
 const allNotes = await getCollection("note");
 const latestNotes = allNotes
 	.sort(collectionDateSort)
@@ -31,11 +31,17 @@ const latestNotes = allNotes
 
 <PageLayout meta={{ title: "Home" }}>
 	<section>
-		<h1 class="title mb-12">Hello World!</h1>
+		<h1 class="title mb-12">Hello, AI!</h1>
 		<p class="mb-4">
-			Hi, I’m a theme for Astro, a simple starter that you can use to create your website or blog.
-			If you want to know more about how you can customise me, add more posts, and make it your own,
-			click on the GitHub icon link below and it will take you to my repo.
+			&nbsp;&nbsp;&nbsp;&nbsp;At the forefront of the next AI evolution, we specialize in building, fine-tuning, and deploying high-performance Small Language Models (SLMs) built on Google’s open-weights Gemma architecture. While massive foundation models grab headlines, modern enterprises need agile, private, and hyper-efficient intelligence. By leveraging Gemma’s state-of-the-art engineering, we transform lightweight base models into tailored powerhouses that deliver domain-specific expertise—without the astronomical cloud computing costs or latency of oversized alternatives.
+		</p>
+		<p class="mb-4">
+			&nbsp;&nbsp;&nbsp;&nbsp;We believe that the future of AI isn't just bigger; it's smarter, faster, and more targeted. Our team works directly with your proprietary data to train custom Gemma-based models optimized for your exact industry workflows, whether that's specialized customer automation, real-time code generation, or complex document analysis. By focusing on parameter efficiency and targeted post-training techniques like LoRA and RLHF, we achieve accuracy that rivals top-tier large models while maintaining a fraction of the footprint.
+
+		</p>
+		<p class="mb-4">
+			&nbsp;&nbsp;&nbsp;&nbsp;Data privacy and operational independence are built into everything we deploy. Because our Gemma-derived SLMs are designed to run efficiently on local hardware, edge devices, or private cloud infrastructure, your sensitive enterprise data never leaves your environment. We empower organizations to take total ownership of their AI stack—delivering lightning-fast inference, complete data sovereignty, and predictable scaling costs for a modern, security-conscious world.
+
 		</p>
 		<SocialList />
 	</section>
@@ -53,6 +59,8 @@ const latestNotes = allNotes
 			</section>
 		)
 	}
+
+	<!--
 	<section class="mt-16">
 		<h2 class="title text-accent mb-6 text-xl"><a href="/posts/">Posts</a></h2>
 		<ul class="space-y-4" role="list">
@@ -65,6 +73,8 @@ const latestNotes = allNotes
 			}
 		</ul>
 	</section>
+	-->
+
 	{
 		latestNotes.length > 0 && (
 			<section class="mt-16">
