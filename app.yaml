@@ -1,0 +1,99 @@
+runtime: python313
+
+# Required by App Engine standard for Python 3.x runtimes even though every
+# real route below is served as a static handler (which never touches this
+# app). main.py is only reached as a fallback for URLs that don't match any
+# static handler, where it serves the site's real 404.html with a proper
+# HTTP 404 status.
+entrypoint: gunicorn -b :$PORT main:app
+
+handlers:
+  # Homepage
+  - url: /
+    static_files: dist/index.html
+    upload: dist/index.html
+    secure: always
+    http_headers:
+      Cache-Control: "no-cache"
+
+  # About page (with or without trailing slash)
+  - url: /about/?
+    static_files: dist/about/index.html
+    upload: dist/about/index.html
+    secure: always
+    http_headers:
+      Cache-Control: "no-cache"
+
+  # Astro's build output — content-hashed filenames, safe to cache forever
+  - url: /_astro
+    static_dir: dist/_astro
+    secure: always
+    http_headers:
+      Cache-Control: "public, max-age=31536000, immutable"
+
+  # Web app manifest icons
+  - url: /icons
+    static_dir: dist/icons
+    secure: always
+    http_headers:
+      Cache-Control: "public, max-age=86400"
+
+  # Pagefind static search index/assets
+  - url: /pagefind
+    static_dir: dist/pagefind
+    secure: always
+    http_headers:
+      Cache-Control: "public, max-age=3600"
+
+  # Root-level static files
+  - url: /favicon-32x32.png
+    static_files: dist/favicon-32x32.png
+    upload: dist/favicon-32x32.png
+    secure: always
+    http_headers:
+      Cache-Control: "public, max-age=86400"
+
+  - url: /icon.png
+    static_files: dist/icon.png
+    upload: dist/icon.png
+    secure: always
+    http_headers:
+      Cache-Control: "public, max-age=86400"
+
+  - url: /social-card.png
+    static_files: dist/social-card.png
+    upload: dist/social-card.png
+    secure: always
+    http_headers:
+      Cache-Control: "public, max-age=86400"
+
+  - url: /manifest.webmanifest
+    static_files: dist/manifest.webmanifest
+    upload: dist/manifest.webmanifest
+    secure: always
+    http_headers:
+      Cache-Control: "public, max-age=86400"
+
+  - url: /robots.txt
+    static_files: dist/robots.txt
+    upload: dist/robots.txt
+    secure: always
+    http_headers:
+      Cache-Control: "public, max-age=3600"
+
+  - url: /sitemap-index.xml
+    static_files: dist/sitemap-index.xml
+    upload: dist/sitemap-index.xml
+    secure: always
+    http_headers:
+      Cache-Control: "public, max-age=3600"
+
+  - url: /sitemap-0.xml
+    static_files: dist/sitemap-0.xml
+    upload: dist/sitemap-0.xml
+    secure: always
+    http_headers:
+      Cache-Control: "public, max-age=3600"
+
+  # Anything else (e.g. a stray /foo) falls through to main.py, which
+  # returns dist/404.html with a real 404 status.

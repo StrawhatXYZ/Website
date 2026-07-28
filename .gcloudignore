@@ -1,0 +1,32 @@
+# Only app.yaml, main.py, requirements.txt, and dist/ (the built site) are
+# needed to deploy. Everything else here is excluded so gcloud doesn't waste
+# time/quota uploading source files, tooling, and node_modules.
+#
+# NOTE: dist/ is intentionally NOT excluded here even though it's in
+# .gitignore — gcloud reads this file instead of .gitignore, so dist/ (the
+# build output) gets uploaded as expected. Run `pnpm build && pnpm postbuild`
+# before `gcloud app deploy` so dist/ is up to date.
+
+.git
+.gitignore
+.gcloudignore
+.github/
+.vscode/
+.zed/
+.astro/
+node_modules/
+content/
+src/
+public/
+pnpm-lock.yaml
+pnpm-workspace.yaml
+*.config.ts
+*.config.js
+biome.json
+tsconfig.json
+.prettierrc.js
+.prettierignore
+.editorconfig
+.nvmrc
+README.md
+LICENSE

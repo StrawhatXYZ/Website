@@ -46,6 +46,17 @@ public/            # static files served as-is (icon.png, social-card.png, etc.)
 
 This site prerenders to static HTML (`output: "static"` in `astro.config.ts`), so it deploys to any static host. See the [Astro deployment docs](https://docs.astro.build/en/guides/deploy/) for platform-specific guides.
 
+### Google App Engine (standard environment)
+
+`app.yaml`, `main.py`, `requirements.txt`, and `.gcloudignore` at the repo root configure a deploy to App Engine standard. Every real route is served directly by the static handlers in `app.yaml`; `main.py` only exists as a fallback so a URL that matches no static handler still gets the site's real `dist/404.html` with a proper HTTP 404 status (App Engine standard's Python 3.x runtimes require an `entrypoint` even for an otherwise fully static site).
+
+```bash
+pnpm build && pnpm postbuild   # produces ./dist/, including the pagefind index
+gcloud app deploy
+```
+
+`.gcloudignore` deliberately does not exclude `dist/` (unlike `.gitignore`), so make sure it's freshly built before deploying — `gcloud` uploads whatever is on disk at deploy time, it doesn't run the build itself.
+
 ## Acknowledgment
 
 Built on top of the [Astro Cactus](https://github.com/chrismwilliams/astro-theme-cactus) starter theme.
