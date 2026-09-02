@@ -36,10 +36,10 @@ jobs:
       - name: Run Astro check
         run: pnpm check
 
-        # run automated tests
-      - name: Run tests
-        run: pnpm test
-
         # ensure build works
       - name: Run Astro build
         run: pnpm build && pnpm postbuild
+
+        # run automated tests
+      - name: Run tests
+        run: pnpm test

@@ -1,6 +1,7 @@
+import { execSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
-import { describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 import { menuLinks, siteConfig } from "../src/site.config";
 
 describe("Site Configuration & Metadata", () => {
@@ -20,6 +21,15 @@ describe("Site Configuration & Metadata", () => {
 
 describe("Build Artifacts Verification", () => {
 	const distDir = path.resolve(__dirname, "../dist");
+
+	beforeAll(() => {
+		if (!fs.existsSync(path.join(distDir, "index.html"))) {
+			execSync("pnpm build && pnpm postbuild", {
+				cwd: path.resolve(__dirname, ".."),
+				stdio: "ignore",
+			});
+		}
+	});
 
 	it("should have generated static HTML entrypoints", () => {
 		expect(fs.existsSync(path.join(distDir, "index.html"))).toBe(true);
