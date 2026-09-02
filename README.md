@@ -8,16 +8,16 @@ The site is intentionally minimal: a home page and an about page, no blog/notes/
 
 All commands are run from the root of the project, using [pnpm](https://pnpm.io).
 
-| Command         | Action                                           |
-| :--------------- | :------------------------------------------------ |
-| `pnpm install`   | Installs dependencies                            |
-| `pnpm dev`       | Starts the local dev server at `localhost:4321`  |
-| `pnpm build`     | Builds the production site to `./dist/`          |
-| `pnpm postbuild` | Builds the Pagefind static search index          |
-| `pnpm preview`   | Previews the production build locally            |
-| `pnpm check`     | Type-checks and lints (astro check + biome)      |
-| `pnpm lint`      | Lints and auto-fixes with biome                  |
-| `pnpm format`    | Formats the codebase with prettier               |
+| Command          | Action                                          |
+| :--------------- | :---------------------------------------------- |
+| `pnpm install`   | Installs dependencies                           |
+| `pnpm dev`       | Starts the local dev server at `localhost:4321` |
+| `pnpm build`     | Builds the production site to `./dist/`         |
+| `pnpm postbuild` | Builds the Pagefind static search index         |
+| `pnpm preview`   | Previews the production build locally           |
+| `pnpm check`     | Type-checks and lints (astro check + biome)     |
+| `pnpm lint`      | Lints and auto-fixes with biome                 |
+| `pnpm format`    | Formats the codebase with prettier              |
 
 ## Project structure
 
