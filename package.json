@@ -10,6 +10,7 @@
 		"build": "astro build",
 		"postbuild": "pagefind --site dist",
 		"preview": "astro preview",
+		"test": "vitest run",
 		"check": "astro check && biome check",
 		"lint": "biome check --write",
 		"format": "prettier -w . --cache"
@@ -52,7 +53,8 @@
 		"prettier-plugin-astro": "0.14.1",
 		"prettier-plugin-tailwindcss": "^0.8.0",
 		"reading-time": "^1.5.0",
-		"typescript": "^6.0.3"
+		"typescript": "^6.0.3",
+		"vitest": "^4.1.11"
 	},
 	"overrides": {
 		"sharp": "^0.34.5"
