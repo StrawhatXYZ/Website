@@ -1,6 +1,6 @@
-# Strawhat XYZ
+# Strawhat Labs
 
-Marketing site for Strawhat XYZ — built with [Astro](https://astro.build) and [Tailwind CSS v4](https://tailwindcss.com).
+Marketing site for Strawhat Labs, built with [Astro](https://astro.build) and [Tailwind CSS v4](https://tailwindcss.com).
 
 The site is intentionally minimal: a home page and an about page, no blog/notes/tags.
 
@@ -35,7 +35,7 @@ public/            # static files served as-is (icon.png, social-card.png, etc.)
 
 - Site metadata (title, description, author, nav links) lives in `src/site.config.ts`.
 - Social links are in `src/components/SocialList.astro`.
-- The favicon/app icons are generated at build time from `public/icon.png` via [astro-webmanifest](https://github.com/alextim/astro-lib/blob/main/packages/astro-webmanifest/README.md) — see `astro.config.ts`.
+- The favicon/app icons are generated at build time from `public/icon.png` via [astro-webmanifest](https://github.com/alextim/astro-lib/blob/main/packages/astro-webmanifest/README.md). See `astro.config.ts`.
 - The header logo is `src/assets/strawhat-logo.svg`, rendered through Astro's `<Image>` component (rasterized to WebP at build time since the source is a large traced illustration).
 
 ## Search
@@ -55,7 +55,7 @@ pnpm build && pnpm postbuild   # produces ./dist/, including the pagefind index
 gcloud app deploy
 ```
 
-`.gcloudignore` deliberately does not exclude `dist/` (unlike `.gitignore`), so make sure it's freshly built before deploying — `gcloud` uploads whatever is on disk at deploy time, it doesn't run the build itself.
+`.gcloudignore` deliberately does not exclude `dist/` (unlike `.gitignore`), so make sure it's freshly built before deploying: `gcloud` uploads whatever is on disk at deploy time, it doesn't run the build itself.
 
 ## Acknowledgment
 

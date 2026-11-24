@@ -7,11 +7,14 @@ import { menuLinks } from "@/site.config";
 import { siteConfig } from "../../site.config";
 ---
 
-<header class="group relative mb-12 flex items-center" id="main-header">
-	<div class="flex items-center">
+<header
+	class:list={["group relative mb-12 flex items-center", siteConfig.showLogo && "sm:ps-26"]}
+	id="main-header"
+>
+	<div class="flex sm:flex-col sm:items-start">
 		<a
 			aria-current={Astro.url.pathname === "/" ? "page" : false}
-			class="inline-flex items-center gap-3 sm:grayscale sm:hover:filter-none"
+			class="inline-flex items-center sm:relative sm:inline-block sm:grayscale sm:hover:filter-none"
 			href="/"
 		>
 			{
@@ -19,7 +22,7 @@ import { siteConfig } from "../../site.config";
 					<Image
 						alt=""
 						aria-hidden="true"
-						class="h-9 w-15 object-contain sm:h-12 sm:w-20"
+						class="me-3 h-9 w-15 object-contain sm:absolute sm:-inset-s-26 sm:me-0 sm:h-14 sm:w-20"
 						format="webp"
 						height={136}
 						src={strawhatLogo}

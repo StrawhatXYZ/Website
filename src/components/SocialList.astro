@@ -17,11 +17,16 @@ const socialLinks: {
 		link: "https://github.com/StrawHatXYZ",
 		name: "mdi:github",
 	},
+	{
+		friendlyName: "Email",
+		link: "mailto:obulapathinchalla@strawhat.xyz",
+		name: "mdi:email-outline",
+	},
 ];
 ---
 
 <div class="flex flex-wrap items-end gap-x-2">
-	<p>Find me on</p>
+	<p>Find us on</p>
 	<ul class="flex flex-1 items-center gap-x-2 sm:flex-initial">
 		{
 			socialLinks.map(({ friendlyName, isWebmention, link, name }) => (

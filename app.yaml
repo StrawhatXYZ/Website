@@ -24,6 +24,54 @@ handlers:
     http_headers:
       Cache-Control: "no-cache"
 
+  # Blog index (with or without trailing slash)
+  - url: /posts/?
+    static_files: dist/posts/index.html
+    upload: dist/posts/index\.html
+    secure: always
+    http_headers:
+      Cache-Control: "no-cache"
+
+  # Individual posts and paginated lists, e.g. /posts/introducing-strawhat-labs/ or /posts/2/
+  - url: /posts/(.+?)/?
+    static_files: dist/posts/\1/index.html
+    upload: dist/posts/.+/index\.html
+    secure: always
+    http_headers:
+      Cache-Control: "no-cache"
+
+  # Tag index
+  - url: /tags/?
+    static_files: dist/tags/index.html
+    upload: dist/tags/index\.html
+    secure: always
+    http_headers:
+      Cache-Control: "no-cache"
+
+  # Individual tag pages, e.g. /tags/robotics/ or /tags/robotics/2/
+  - url: /tags/(.+?)/?
+    static_files: dist/tags/\1/index.html
+    upload: dist/tags/.+/index\.html
+    secure: always
+    http_headers:
+      Cache-Control: "no-cache"
+
+  # Blog RSS feed
+  - url: /rss\.xml
+    static_files: dist/rss.xml
+    upload: dist/rss\.xml
+    mime_type: application/rss+xml
+    secure: always
+    http_headers:
+      Cache-Control: "public, max-age=3600"
+
+  # Per-post social share images
+  - url: /og-image
+    static_dir: dist/og-image
+    secure: always
+    http_headers:
+      Cache-Control: "public, max-age=86400"
+
   # Astro's build output — content-hashed filenames, safe to cache forever
   - url: /_astro
     static_dir: dist/_astro

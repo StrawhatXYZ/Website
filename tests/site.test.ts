@@ -6,9 +6,9 @@ import { menuLinks, siteConfig } from "../src/site.config";
 
 describe("Site Configuration & Metadata", () => {
 	it("should have correct site metadata defined", () => {
-		expect(siteConfig.title).toBe("Strawhat XYZ");
+		expect(siteConfig.title).toBe("Strawhat Labs");
 		expect(siteConfig.url).toBe("https://strawhat.xyz/");
-		expect(siteConfig.description).toContain("Strawhat XYZ");
+		expect(siteConfig.description).toContain("Strawhat");
 		expect(siteConfig.lang).toBe("en-GB");
 		expect(siteConfig.ogLocale).toBe("en_GB");
 		expect(siteConfig.showLogo).toBe(true);
@@ -41,6 +41,11 @@ describe("Build Artifacts Verification", () => {
 		expect(fs.existsSync(path.join(distDir, "sitemap-index.xml"))).toBe(true);
 		expect(fs.existsSync(path.join(distDir, "robots.txt"))).toBe(true);
 		expect(fs.existsSync(path.join(distDir, "manifest.webmanifest"))).toBe(true);
+	});
+
+	it("should have generated the blog index and RSS feed", () => {
+		expect(fs.existsSync(path.join(distDir, "posts/index.html"))).toBe(true);
+		expect(fs.existsSync(path.join(distDir, "rss.xml"))).toBe(true);
 	});
 
 	it("should have generated the Pagefind search index", () => {

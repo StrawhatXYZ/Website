@@ -10,12 +10,12 @@ export const siteConfig: SiteConfig = {
 		- The link value found in src/components/layout/Header.astro L:35
 		- In the footer found in src/components/layout/Footer.astro L:12
 	*/
-	title: "Strawhat XYZ",
+	title: "Strawhat Labs",
 	// Used as both a meta property (src/components/BaseHead.astro L:31 + L:49) & the generated satori png (src/pages/og-image/[slug].png.ts)
 	author: "Obulapathi N. Challa ",
 	// Used as the default description meta property and webmanifest description
 	description:
-		"Strawhat XYZ builds, fine-tunes, and deploys high-performance Small Language Models on Google's Gemma architecture for private, efficient enterprise AI.",
+		"Strawhat engineers autonomous, intelligent robotic systems powered by fine-tuned Gemma models on edge hardware and decentralized blockchain coordination.",
 	// HTML lang property, found in src/layouts/Base.astro L:18 & astro.config.ts L:48
 	lang: "en-GB",
 	// Meta property, found in src/components/BaseHead.astro L:42
@@ -33,7 +33,20 @@ export const siteConfig: SiteConfig = {
 };
 
 // Used to generate links in both the Header & Footer.
-export const menuLinks: { path: string; title: string }[] = [];
+export const menuLinks: { path: string; title: string }[] = [
+	{
+		path: "/",
+		title: "Home",
+	},
+	{
+		path: "/about/",
+		title: "About",
+	},
+	{
+		path: "/posts/",
+		title: "Blog",
+	},
+];
 
 // https://expressive-code.com/reference/configuration/
 export const expressiveCodeOptions: AstroExpressiveCodeOptions = {
