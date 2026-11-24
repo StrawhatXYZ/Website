@@ -3,7 +3,9 @@ import type { SiteConfig } from "@/types";
 
 export const siteConfig: SiteConfig = {
 	// ! Please remember to replace the following site property with your own domain, used in astro.config.ts
-	url: "https://strawhat.xyz/",
+	// Use www: only www.strawhat.xyz is mapped (with HTTPS) in App Engine. The bare domain has no
+	// certificate, so link-preview images and canonical URLs pointing there fail to load.
+	url: "https://www.strawhat.xyz/",
 	/*
 		- Used to construct the meta title property found in src/components/BaseHead.astro L:11
 		- The webmanifest name found in astro.config.ts L:42

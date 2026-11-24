@@ -7,7 +7,7 @@ import { menuLinks, siteConfig } from "../src/site.config";
 describe("Site Configuration & Metadata", () => {
 	it("should have correct site metadata defined", () => {
 		expect(siteConfig.title).toBe("Strawhat Labs");
-		expect(siteConfig.url).toBe("https://strawhat.xyz/");
+		expect(siteConfig.url).toBe("https://www.strawhat.xyz/");
 		expect(siteConfig.description).toContain("Strawhat");
 		expect(siteConfig.lang).toBe("en-GB");
 		expect(siteConfig.ogLocale).toBe("en_GB");

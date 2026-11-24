@@ -3,6 +3,7 @@ import satori, { type SatoriOptions } from "satori";
 import sharp from "sharp";
 import RobotoMonoBold from "@/assets/roboto-mono-700.ttf";
 import RobotoMono from "@/assets/roboto-mono-regular.ttf";
+import strawhatLogoSvg from "@/assets/strawhat-logo.svg?raw";
 import { getAllPosts } from "@/data/post";
 import { getFormattedDate } from "@/utils/date";
 import { readCache, writeToCache } from "./_cacheUtil";
@@ -30,6 +31,19 @@ const ogOptions: SatoriOptions = {
 
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
+// Rasterise the straw-hat logo once and reuse it as a data URI in every card's footer.
+let logoDataUri: string | undefined;
+async function getLogoDataUri(): Promise<string> {
+	if (!logoDataUri) {
+		const png = await sharp(Buffer.from(strawhatLogoSvg), { density: 300 })
+			.resize({ width: 240 })
+			.png()
+			.toBuffer();
+		logoDataUri = `data:image/png;base64,${png.toString("base64")}`;
+	}
+	return logoDataUri;
+}
+
 export async function GET(context: APIContext) {
 	const { pubDate, title } = context.props as Props;
 
@@ -41,7 +55,7 @@ export async function GET(context: APIContext) {
 			month: "long",
 			weekday: "long",
 		});
-		const svg = await satori(ogMarkup(title, postDate), ogOptions);
+		const svg = await satori(ogMarkup(title, postDate, await getLogoDataUri()), ogOptions);
 		pngBuffer = await sharp(Buffer.from(svg)).png().toBuffer();
 		writeToCache(title, pubDate, pngBuffer);
 	}
