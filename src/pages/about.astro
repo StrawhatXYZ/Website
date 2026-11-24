@@ -1,26 +1,40 @@
 ---
 import SocialList from "@/components/SocialList.astro";
 import PageLayout from "@/layouts/Base.astro";
-import { siteConfig } from "@/site.config";
 
 const meta = {
-	description: siteConfig.description,
+	description:
+		"Strawhat builds autonomous robotic swarms driven by custom Gemma-based models on edge hardware and decentralized blockchain coordination.",
 	title: "About",
 };
 ---
 
 <PageLayout meta={meta}>
-	<section>
-		<h1 class="title mb-12">Hello, AI!</h1>
+	<section data-pagefind-body>
+		<h1 class="title mb-2">About Us</h1>
+		<p class="text-muted mb-6">Empowering autonomous robotic swarms.</p>
 		<p class="mb-4">
-			&nbsp;&nbsp;&nbsp;&nbsp;At the forefront of the next AI evolution, we specialize in building, fine-tuning, and deploying high-performance Small Language Models (SLMs) built on Google’s open-weights Gemma architecture. While massive foundation models grab headlines, modern enterprises need agile, private, and hyper-efficient intelligence. By leveraging Gemma’s state-of-the-art engineering, we transform lightweight base models into tailored powerhouses that deliver domain-specific expertise—without the astronomical cloud computing costs or latency of oversized alternatives.
+			At Strawhat, we specialize in building autonomous and intelligent robotic systems driven by
+			custom Gemma-based language models and decentralized blockchain coordination. By leveraging
+			Google's open-weights Gemma architecture, we deploy highly efficient AI models directly onto
+			robotic edge hardware. This empowers machines with domain-specific reasoning and fast
+			visual-language execution without cloud reliance.
 		</p>
 		<p class="mb-4">
-			&nbsp;&nbsp;&nbsp;&nbsp;We believe that the future of AI isn't just bigger; it's smarter, faster, and more targeted. Our team works directly with your proprietary data to train custom Gemma-based models optimized for your exact industry workflows, whether that's specialized customer automation, real-time code generation, or complex document analysis. By focusing on parameter efficiency and targeted post-training techniques like LoRA and RLHF, we achieve accuracy that rivals top-tier large models while maintaining a fraction of the footprint.
+			To solve complex multi-agent challenges, our systems utilize blockchain technology to
+			facilitate trustless, decentralized coordination. Robots in a swarm can verify tasks, share
+			situational intelligence, and execute multi-agent contracts autonomously. This distributed
+			framework guarantees auditability, data integrity, and resilient peer-to-peer decision-making
+			across complex physical networks.
 		</p>
 		<p class="mb-4">
-			&nbsp;&nbsp;&nbsp;&nbsp;Data privacy and operational independence are built into everything we deploy. Because our Gemma-derived SLMs are designed to run efficiently on local hardware, edge devices, or private cloud infrastructure, your sensitive enterprise data never leaves your environment. We empower organizations to take total ownership of their AI stack—delivering lightning-fast inference, complete data sovereignty, and predictable scaling costs for a modern, security-conscious world.
+			By bringing together efficient edge AI, specialized Gemma models, and decentralized
+			blockchain networks, Strawhat unlocks total operational independence for modern robotics. We
+			enable organizations to deploy secure, self-coordinating robotic swarms designed to meet the
+			demands of enterprise automation.
 		</p>
-		<SocialList />
+		<div class="mt-12">
+			<SocialList />
+		</div>
 	</section>
 </PageLayout>

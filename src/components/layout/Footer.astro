@@ -1,7 +1,19 @@
 ---
+import { Image } from "astro:assets";
+import strawhatLogo from "@/assets/strawhat-logo.svg";
 import { menuLinks, siteConfig } from "@/site.config";
 
 const year = new Date().getFullYear();
+// Small decorative straw-hat logo shown before the site name.
+const logo = {
+	alt: "",
+	"aria-hidden": "true" as const,
+	class: "h-4 w-7 object-contain",
+	format: "webp" as const,
+	height: 34,
+	src: strawhatLogo,
+	width: 60,
+};
 ---
 
 <footer
@@ -9,7 +21,11 @@ const year = new Date().getFullYear();
 >
 	<div class="me-0 sm:me-4">
 		&copy; {siteConfig.author}
-		{year}.<span class="inline-block">&nbsp;🚀&nbsp;{siteConfig.title}&nbsp;🌵&nbsp;</span>
+		{year}.<span class="ms-2 inline-flex items-center gap-x-1.5 align-middle">
+			<Image {...logo} />
+			{siteConfig.title}
+			<span aria-hidden="true">🤖</span>
+		</span>
 	</div>
 	<nav aria-label="Footer" class="sm:divide-muted flex gap-x-2 sm:gap-x-0 sm:divide-x">
 		{
